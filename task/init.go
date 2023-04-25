@@ -1,10 +1,10 @@
 package task
 
 import (
+	"github.com/18689221165/lynn-toolkit/redis"
 	"github.com/hibiken/asynq"
 	"go.uber.org/zap"
 	"time"
-	"youliao.cn/liaoma-toolkit/redis"
 )
 
 type AsynqServerConfig struct {

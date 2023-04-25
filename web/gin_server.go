@@ -3,6 +3,7 @@ package web
 import (
 	"context"
 	"fmt"
+	"github.com/18689221165/lynn-toolkit/service"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
@@ -10,7 +11,6 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
-	"youliao.cn/liaoma-toolkit/service"
 )
 
 // Config web server config

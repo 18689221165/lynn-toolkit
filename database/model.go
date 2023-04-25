@@ -1,8 +1,8 @@
 package database
 
 import (
+	"github.com/18689221165/lynn-toolkit/types"
 	"gorm.io/gorm"
-	"youliao.cn/liaoma-toolkit/types"
 )
 
 // Model a basic GoLang struct which includes the following fields: ID, CreatedAt, UpdatedAt, DeletedAt

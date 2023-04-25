@@ -1,6 +1,7 @@
 package database
 
 import (
+	"github.com/18689221165/lynn-toolkit/types"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -8,7 +9,6 @@ import (
 	"log"
 	"os"
 	"time"
-	"youliao.cn/liaoma-toolkit/types"
 )
 
 // Conf 数据库相关配置

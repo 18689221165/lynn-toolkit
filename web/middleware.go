@@ -2,6 +2,7 @@ package web
 
 import (
 	"bytes"
+	"github.com/18689221165/lynn-toolkit/service"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -12,7 +13,6 @@ import (
 	"runtime/debug"
 	"strings"
 	"time"
-	"youliao.cn/liaoma-toolkit/service"
 )
 
 type config struct {
