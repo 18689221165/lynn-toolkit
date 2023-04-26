@@ -104,3 +104,7 @@ func (instance GinServer) LoadHTMLGlob(path string) {
 func (instance GinServer) LoadHTMLFiles(files ...string) {
 	instance.engine.LoadHTMLFiles(files...)
 }
+
+func (instance GinServer) Delims(left, right string) {
+	instance.engine.Delims(left, right)
+}
