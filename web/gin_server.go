@@ -96,3 +96,11 @@ func (instance *GinServer) Shutdown() {
 func (instance *GinServer) AddMiddleware(middleware ...gin.HandlerFunc) {
 	instance.engine.Use(middleware...)
 }
+
+func (instance GinServer) LoadHTMLGlob(path string) {
+	instance.engine.LoadHTMLGlob(path)
+}
+
+func (instance GinServer) LoadHTMLFiles(files ...string) {
+	instance.engine.LoadHTMLFiles(files...)
+}
