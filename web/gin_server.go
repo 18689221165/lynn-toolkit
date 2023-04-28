@@ -22,13 +22,12 @@ type Config struct {
 
 type GinServer struct {
 	conf   Config
-	engine *gin.Engine
+	Engine *gin.Engine
 	server *http.Server
 	logger *zap.SugaredLogger
 }
 
 func NewGinServer(conf Config, log *zap.SugaredLogger) *GinServer {
-
 	gin.DisableConsoleColor()
 	gin.SetMode(conf.RunMode)
 
@@ -39,17 +38,12 @@ func NewGinServer(conf Config, log *zap.SugaredLogger) *GinServer {
 	engine.NoRoute(func(c *gin.Context) { c.JSON(http.StatusOK, service.ErrNotFound) })
 	httpServer := &http.Server{Addr: fmt.Sprintf(":%d", conf.Port), Handler: engine}
 
-	return &GinServer{conf: conf, engine: engine, server: httpServer, logger: log}
+	return &GinServer{conf: conf, Engine: engine, server: httpServer, logger: log}
 }
 
 // RouteGroup 增加组路由
 func (instance *GinServer) RouteGroup(relativePath string, middlewares ...gin.HandlerFunc) *gin.RouterGroup {
-	return instance.engine.Group(relativePath, middlewares...)
-}
-
-// Static 增加静态文件
-func (instance *GinServer) Static(relativePath, root string) {
-	instance.engine.Static(relativePath, root)
+	return instance.Engine.Group(relativePath, middlewares...)
 }
 
 // RunAsync 异步方式启动
@@ -91,20 +85,4 @@ func (instance *GinServer) Shutdown() {
 		return
 	}
 	instance.logger.Warnf("Web 服务器实例已停止，88！")
-}
-
-func (instance *GinServer) AddMiddleware(middleware ...gin.HandlerFunc) {
-	instance.engine.Use(middleware...)
-}
-
-func (instance GinServer) LoadHTMLGlob(path string) {
-	instance.engine.LoadHTMLGlob(path)
-}
-
-func (instance GinServer) LoadHTMLFiles(files ...string) {
-	instance.engine.LoadHTMLFiles(files...)
-}
-
-func (instance GinServer) Delims(left, right string) {
-	instance.engine.Delims(left, right)
 }
